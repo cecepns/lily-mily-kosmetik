@@ -91,7 +91,7 @@ function BrandManagement() {
       existing_logo: brand.logo || ''
     });
     if (brand.logo) {
-      setLogoPreview(`${API_BASE_URL.replace('/api', '')}/uploads/${brand.logo}`);
+      setLogoPreview(`${API_BASE_URL.replace(/\/api$/, '')}/uploads/${brand.logo}`);
     }
     setShowForm(true);
   };
@@ -142,7 +142,7 @@ function BrandManagement() {
             <div className="flex items-center justify-between mb-4">
               {brand.logo ? (
                 <img
-                  src={`${API_BASE_URL.replace('/api', '')}/uploads/${brand.logo}`}
+                  src={`${API_BASE_URL.replace(/\/api$/, '')}/uploads/${brand.logo}`}
                   alt={brand.name}
                   className="h-12 w-12 rounded-lg object-cover"
                 />

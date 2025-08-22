@@ -37,7 +37,7 @@ function ProductForm({ product, brands, categories, onClose, onSubmit }) {
       setFormData(newFormData);
       
       if (product.image) {
-        setImagePreview(`${API_BASE_URL.replace('/api', '')}/uploads/${product.image}`);
+        setImagePreview(`${API_BASE_URL.replace(/\/api$/, '')}/uploads/${product.image}`);
       } else {
         setImagePreview('');
       }
