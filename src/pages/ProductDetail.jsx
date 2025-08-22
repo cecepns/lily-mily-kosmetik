@@ -97,7 +97,7 @@ function ProductDetail() {
             <div className="md:w-1/2">
               {product.image ? (
                 <img
-                  src={`${API_BASE_URL.replace('/api', '')}/uploads/${product.image}`}
+                  src={`${API_BASE_URL.replace(/\/api$/, '')}/uploads/${product.image}`}
                   alt={product.name}
                   className="w-full h-64 md:h-full object-cover"
                 />
