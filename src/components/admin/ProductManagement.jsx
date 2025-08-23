@@ -20,7 +20,7 @@ function ProductManagement() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
-  const [itemsPerPage] = useState(4);
+  const [itemsPerPage] = useState(10);
   
   // Excel import states
   const [showImportModal, setShowImportModal] = useState(false);

@@ -20,7 +20,7 @@ function StorePage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [totalProducts, setTotalProducts] = useState(0);
-  const [itemsPerPage] = useState(20);
+  const [itemsPerPage] = useState(4);
 
   useEffect(() => {
     fetchProducts();
