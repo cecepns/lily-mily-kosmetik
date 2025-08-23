@@ -52,10 +52,10 @@ function ProductGrid({ products }) {
           <div className="p-4">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm text-gray-500 font-medium">{product.brand_name}</span>
-              <div className="flex items-center">
+              {/* <div className="flex items-center">
                 <Star className="h-4 w-4 text-yellow-400 fill-current" />
                 <span className="text-sm text-gray-500 ml-1">4.8</span>
-              </div>
+              </div> */}
             </div>
             
             <h3 className="font-semibold text-gray-800 mb-2 line-clamp-2">{product.name}</h3>
