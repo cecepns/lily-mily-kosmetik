@@ -198,7 +198,7 @@ app.delete('/api/brands/:id', (req, res) => {
 
 // Products routes
 app.get('/api/products', (req, res) => {
-  const { category, search, page = 1, limit = 20 } = req.query;
+  const { category, search, page = 1, limit = 10 } = req.query;
   const offset = (parseInt(page) - 1) * parseInt(limit);
   
   // Build base query for counting total products
