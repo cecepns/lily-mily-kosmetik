@@ -61,7 +61,7 @@ function StorePage() {
   // Handle page change
   const handlePageChange = (page) => {
     setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 400, behavior: 'smooth' });
   };
 
   // Generate page numbers for pagination
