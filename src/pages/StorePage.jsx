@@ -127,7 +127,7 @@ function StorePage() {
       <Hero />
       
       {/* Search Bar */}
-      <div className="bg-white py-6">
+      <div className="bg-white py-6 relative z-50">
         <div className="container mx-auto px-4">
           <SearchBar 
             onSearch={handleSearch}
@@ -138,7 +138,7 @@ function StorePage() {
       </div>
       
       {/* Desktop Category Filter */}
-      <div className="hidden md:block bg-white shadow-sm border-b">
+      <div className="hidden md:block bg-white shadow-sm border-b relative z-40">
         <div className="container mx-auto px-4 py-4">
           <div className="flex flex-wrap gap-2 justify-center">
             <button
@@ -171,7 +171,7 @@ function StorePage() {
         </div>
       </div>
 
-      <main className="container mx-auto px-4 py-8 pb-20 md:pb-8">
+      <main className="container mx-auto px-4 py-8 pb-20 md:pb-8 relative z-10">
         <div className="text-center mb-8" data-aos="fade-up">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             {searchQuery 

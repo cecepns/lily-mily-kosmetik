@@ -16,7 +16,13 @@ function ProductGrid({ products }) {
       <div className="text-center py-20" data-aos="fade-up">
         <div className="text-gray-400 text-6xl mb-4">🔍</div>
         <h3 className="text-xl font-semibold text-gray-600 mb-2">Produk Tidak Ditemukan</h3>
-        <p className="text-gray-500">Coba kategori lain atau hubungi kami untuk produk yang Anda cari</p>
+        <p className="text-gray-500">Coba kata kunci lain, kategori lain, atau hubungi kami untuk produk yang Anda cari</p>
+        <div className="mt-4 text-sm text-gray-400">
+          <p>Tips pencarian:</p>
+          <p>• Coba kata kunci yang lebih umum</p>
+          <p>• Periksa ejaan kata kunci</p>
+          <p>• Gunakan nama merek atau kategori</p>
+        </div>
       </div>
     );
   }

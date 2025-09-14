@@ -223,10 +223,10 @@ app.get('/api/products', (req, res) => {
   
   // Add search condition
   if (search) {
-    const searchCondition = ' AND (p.name LIKE ? OR b.name LIKE ?)';
+    const searchCondition = ' AND (p.name LIKE ? OR b.name LIKE ? OR c.name LIKE ?)';
     countQuery += searchCondition;
     query += searchCondition;
-    queryParams.push(`%${search}%`, `%${search}%`);
+    queryParams.push(`%${search}%`, `%${search}%`, `%${search}%`);
   }
   
   // Add category filter
