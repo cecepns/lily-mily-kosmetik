@@ -3,6 +3,7 @@ import axios from 'axios';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { apiEndpoints } from '../config/api';
 import ProductGrid from '../components/ProductGrid';
+import SearchBar from '../components/SearchBar';
 import MobileNavigation from '../components/MobileNavigation';
 import Header from '../components/Header';
 import ReviewSection from '../components/ReviewSection';
@@ -14,6 +15,7 @@ const categories = ['Skincare', 'Bodycare', 'Haircare', 'Make-up', 'Accessories'
 function StorePage() {
   const [products, setProducts] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   
   // Pagination states
@@ -24,7 +26,7 @@ function StorePage() {
 
   useEffect(() => {
     fetchProducts();
-  }, [selectedCategory, currentPage]);
+  }, [selectedCategory, currentPage, searchQuery]);
 
   const fetchProducts = async () => {
     try {
@@ -36,6 +38,10 @@ function StorePage() {
       
       if (selectedCategory) {
         params.category = selectedCategory;
+      }
+      
+      if (searchQuery) {
+        params.search = searchQuery;
       }
       
       const response = await axios.get(apiEndpoints.products, { params });
@@ -100,16 +106,36 @@ function StorePage() {
     return pages;
   };
 
-  // Reset to first page when category changes
+  // Reset to first page when category or search changes
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory]);
+  }, [selectedCategory, searchQuery]);
+
+  // Search handlers
+  const handleSearch = (query) => {
+    setSearchQuery(query);
+  };
+
+  const handleClearSearch = () => {
+    setSearchQuery('');
+  };
 
   return (
     <div className="min-h-screen bg-pink-50">
       <Header />
       
       <Hero />
+      
+      {/* Search Bar */}
+      <div className="bg-white py-6">
+        <div className="container mx-auto px-4">
+          <SearchBar 
+            onSearch={handleSearch}
+            searchQuery={searchQuery}
+            onClear={handleClearSearch}
+          />
+        </div>
+      </div>
       
       {/* Desktop Category Filter */}
       <div className="hidden md:block bg-white shadow-sm border-b">
@@ -148,12 +174,21 @@ function StorePage() {
       <main className="container mx-auto px-4 py-8 pb-20 md:pb-8">
         <div className="text-center mb-8" data-aos="fade-up">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            {selectedCategory || 'Semua Produk'}
+            {searchQuery 
+              ? `Hasil Pencarian: "${searchQuery}"` 
+              : selectedCategory || 'Semua Produk'
+            }
           </h2>
-          <p className="text-gray-600">Temukan produk kecantikan terbaik untuk Anda</p>
+          <p className="text-gray-600">
+            {searchQuery 
+              ? `Menampilkan produk yang sesuai dengan pencarian Anda` 
+              : 'Temukan produk kecantikan terbaik untuk Anda'
+            }
+          </p>
           {totalProducts > 0 && (
             <p className="text-sm text-gray-500 mt-2">
               Menampilkan {products.length} dari {totalProducts} produk
+              {searchQuery && ` untuk "${searchQuery}"`}
             </p>
           )}
         </div>
